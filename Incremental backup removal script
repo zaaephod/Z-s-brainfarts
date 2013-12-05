@@ -1,0 +1,5 @@
+# Use this to remove old incremental recursive backups from my other script posted here
+# Adjust the value of mtime to change the length of time a backup will live. This script defaults to 3 days.
+# Be CAREFUL with this!
+
+find /media/usb0/backup/ -maxdepth 1 -mtime +3 -exec rm -rf {} \;
