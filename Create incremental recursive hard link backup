@@ -1,0 +1,12 @@
+#!/bin/sh
+# creates an incremental recursive backup using links to conserve space
+# could be easily modified to send to a remote server rather than an external usb hard drive like I did
+# unchanged files are linked to files in /current
+# make sure the destination directory exists (/backup) and you have permissions
+# backups created will be prefixed with 'back-' then the current date
+# ~Z
+
+date=`date "+%Y-%m-%dT%H:%M:%S"`
+rsync -aP --link-dest=/media/usb0/backup/current /home/zaaephod/cb /media/usb0/backup/back-$date
+rm -f /media/usb0/backup/current
+ln -s back-$date /media/usb0/backup/current
